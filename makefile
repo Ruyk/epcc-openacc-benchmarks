@@ -30,9 +30,13 @@ else ifeq ($(COMP),cray)
 CC = cc
 CFLAGS = -hlist=a -h acc_model=auto_async_none
 LFLAGS = 
+else ifeq ($(COMP),accull)
+CC = $(HOME)/yacf/accull
+CFLAGS = 
+LFLAGS =
 endif
 
-objects = common.o main.o level0.o level1.o 27stencil.o le_core.o himeno.o
+objects = common.o main.o level0.o 27stencil.o level1.o le_core.o himeno.o
 
 default: oa
 
@@ -45,4 +49,4 @@ oa : $(objects)
 .PHONY: clean
 
 clean:
-	rm -f *.o oa __hmpp* *.lst *.cub *.ptx
+	rm -Rf *.o oa __hmpp* *.lst *.cub *.ptx *.cl accull_* yacf_log_*
