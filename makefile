@@ -36,7 +36,7 @@ CFLAGS =
 LFLAGS =
 endif
 
-objects = common.o main.o level0.o 27stencil.o level1.o le_core.o himeno.o
+objects = common.o main.o level0.o 27stencil.o level1.o # le_core.o himeno.o
 
 default: oa
 

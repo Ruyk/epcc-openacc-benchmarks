@@ -91,7 +91,7 @@ int main(int argc, char **argv) {
 
   /* Level 1 Tests - BLAS-esque kernels */
 
-  sprintf(testName, "2MM");
+ /* sprintf(testName, "2MM");
   benchmark(testName, &twomm);
 
   sprintf(testName, "3MM");
@@ -129,18 +129,18 @@ int main(int argc, char **argv) {
 
   sprintf(testName, "3DCONV");
   benchmark(testName, &threedconv);
-
+*/
   /* Level 2 Tests - small applications */
 
   sprintf(testName, "27S");
   benchmark(testName, &stencil);
 
-  sprintf(testName, "LE2D");
+ /* sprintf(testName, "LE2D");
   benchmark(testName, &le_main);
 
   sprintf(testName, "HIMENO");
   benchmark(testName, &himeno_main);
-
+*/
   /* Print results & free results storage */
   finalise();
 
