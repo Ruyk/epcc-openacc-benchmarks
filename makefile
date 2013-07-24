@@ -36,6 +36,10 @@ CFLAGS =
 LFLAGS =
 endif
 
+NCC=/usr/local/cuda/bin/nvcc
+NCFLAGS=-arch=sm_30 -Xcompiler -fopenmp 
+NCOPENCL=-Xcompiler -lOpenCL
+
 objects = common.o main.o level0.o 27stencil.o level1.o # le_core.o himeno.o
 
 default: oa
@@ -45,6 +49,17 @@ default: oa
 
 oa : $(objects)
 	$(CC) $(CFLAGS) -o $@ $^ $(LFLAGS)
+
+native : native_acc native_ocl native_cuda
+
+native_acc:
+	$(CC) $(CFLAG) kernel_acc.c -o kernel_acc.exe
+
+native_ocl:
+	$(NCC) $(NCFLAGS) $(NCOPENCL) kernel_opencl.c -o kernel_ocl.exe
+
+native_cuda:
+	$(NCC)  $(NCFLAGS)  kernel_cuda.cu -o kernel_cuda.exe
 
 .PHONY: clean
 
