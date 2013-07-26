@@ -213,7 +213,7 @@ double jacobi(int nn)
   int i,j,k,n;
   double gosa, s0, ss, t1, t2;
   t1 = omp_get_wtime();
-#pragma acc data copyin(a,b,p), create(i,j,k,s0,ss)
+#pragma acc data copyin(a,b,c,p,wrk1,wrk2,omega,imax,jmax,kmax,bnd), create(i,j,k,s0,ss)
   {
     for(n=0;n<nn;++n){
 #pragma acc parallel loop private(i,j,k,s0,ss), reduction(+:gosa)
